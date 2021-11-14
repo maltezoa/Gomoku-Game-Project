@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        
+
+
+        <script>
+            // Game in-process flag
+            var game = true;
+
+            // Turn count value initial @ 1 for first turn
+            var turnCount = 1;
+
+            // Event listener for adding a piece (addPiece will be a function)
+            document.addEventListener("click", addPiece);
+
+            // Player global variable, 0 == player 1, 1 == player 2
+            var p = 0
+
+            // Board 2darray 
+            var board = [];
+            // Populate board 2darray with -1 values 
+            // This will eventually be turned into a function for the players to choose between a 15x15 or 19x19 board
+            for (var i =0; i<15; i++){
+                board.push([]);
+                // fill array with -1 value flags (for open slot)
+		        for (var j=0; j<15; j++){
+			        board[i].push(-1);
+		        }
+	        }
+            
+            // Next turn function
+            function nextTurn(){
+		        if (p === 1){
+		        	p = 0;
+		        }
+		        else {
+		        	p = 1;
+		        }
+		        checkWinner();
+	        }
+
+            // Check winner based on 2dArray values
+            function checkWinner(){
+		        for (var i=0; i<15; i++){
+			        for (var j=0; j<10; j++){
+				        var z = board[i][j];
+				        var y = board[j][i]
+                        // If 5 in any direction, p = cell value (Player 1 or 2), game end (false), break
+				        if (z != -1 && ((z === board[i][j+1] && z === board[i][j+2] && z === board[i][j+3] && z === board[i][j+4]) || (i<=10 && z != -1 && z === board[i+1][j+1] && z === board[i+2][j+2] && z === board[i+3][j+3] && z === board[i+4][j+4]))){
+					        p = z;
+					        game = false;
+					        break;
+				        }
+				        else if (y != -1 && ((y === board[j+1][i] && y === board[j+2][i] && y === board[j+3][i] && y === board[j+4][i]) || (i>=4 && y != -1 && y === board[j+1][i-1] && y === board[j+2][i-2] && y === board[j+3][i-3] && y === board[j+4][i-4]))){
+					        p = y;
+					        game = false;
+					        break;
+				        }
+			        }
+                    // If game is false, break for loop
+			        if (!game){
+				        break;
+			        }
+		        }
+                // if game is false, remove event listener, announce with player wins (p+1)
+		        if (!game){
+			        document.removeEventListener("click", addPiece);
+			        setTimeout(function(){alert("Player " + (p+1) + " wins!");},10);
+		        }
+	        }
+
+            // Add piece function
+            function addPiece(){
+                // have a var for both row and column from user input
+
+                //  check if spot is empty (-1), if not then alert a message saying a piece has already been placed there
+                if (board[row][col] != -1){
+                    alert("A piece has already been placed here.");
+                }
+                else{
+                    // place a piece, put the player value in the 2dArray, increment turn count, advance into next player
+                    board[row][col] = p;
+                    turnCount += 1;
+                    nextTurn();
+                }
+            }
+
+        </script>
+    </body>
+</html>

@@ -2,22 +2,165 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <!-- Insert CSS File for Index Menu here-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+        * {
+            box-sizing: border-box;
+        }
+        ul {
+            list-style-type: none;
+            height: 80%;
+            width: 80%;
+            text-align: center;
+        }
+        li {
+            width: 100%;
+            text-align: center;
+        }
+        li a {
+            margin-left: auto;
+            margin-right: auto;
+            font-size: auto;
+            font-family: 'Itim', cursive;
+            text-decoration: none;
+            color: rgb(8,46,97);
+        }
+        body {
+            background-color: rgb(8, 46, 97);
+        }
+        .header {
+            font-family: 'Itim', cursive;
+            font-size: 28px;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+        .menuBox {
+            width: 80vw;
+            height: 90vh;
+            font-size: 20px;
+            background-color: rgb(11, 31, 61);
+            margin: 8vh auto 8vh auto;
+            position: relative;
+            border: 3px inset rgb(190, 182, 182);
+        }
+        #bulldogImg {
+            display: block;
+            position: relative;
+            margin-left: auto;
+            margin-right: auto;
+            width: 10vw;
+            height: auto;
+        }
+        #menuPic {
+            min-width: 85%;
+            max-width: 95%;
+            height: auto;
+            max-height: 80%;
+            position: relative;
+            border: 2px inset rgb(190, 182, 182);
+        }
+        #menuDesc {
+            font-family: 'Itim', cursive;
+            color: black;
+            font-size: auto;
+            height: auto;
+            max-height: 15%;
+            min-width: 85%;
+            max-width: 95%;
+        }
+        #menuList {
+            background-color: white;
+            height: 40%;
+            width: 20%;
+        }
+        #rightCont {
+            float: right;
+            text-align: center;
+            width: 35%;
+            height: 50%;
+            margin: 3vh 2vw 2vh 1vw;
+            padding: 1vh 1vw 1vh 1vw;
+            background-color: white;
+            border: 3px inset rgb(190, 182, 182);
+        }
+        #leftCont {
+            float: left;
+            width: 45%;
+            height: 50%;
+            margin: 3vh 1vw 2vh 2vw;
+            background-color: white; 
+            border: 3px inset rgb(190, 182, 182);
+        }
+        </style>
     </head>
     <body>
-        
+        <script>
+            function display(x) {
+                switch(x) {
+                    case 0:
+                        document.getElementById("menuPic").src = "images/lan.png";
+                        document.getElementById("menuDesc").innerHTML = "<p>Play Gomoku locally on the same computer</p>"
+                        break;
+                    case 1:
+                        document.getElementById("menuPic").src = "images/online.png";
+                        document.getElementById("menuDesc").innerHTML = "<p>Play Gomoku against an online opponent</p>"
+                        break;
+                    case 2:
+                        document.getElementById("menuPic").src = "images/contact.png";
+                        document.getElementById("menuDesc").innerHTML = "<p>View developer contact page</p>"
+                        break;
+                    case 3:
+                        document.getElementById("menuPic").src = "images/howtoplay.png";
+                        document.getElementById("menuDesc").innerHTML = "<p>Learn how to play Gomoku</p>"
+                        break;
+                    case 4:
+                        document.getElementById("menuPic").src = "images/leaderboard.png";
+                        document.getElementById("menuDesc").innerHTML = "<p>View leaderboard standings</p>"
+                        break;
+                    case 5:
+                        document.getElementById("menuPic").src = "images/login.png";
+                        document.getElementById("menuDesc").innerHTML = "<p>Login to an existing account</p>"
+                        break;
+                    case 6:
+                        document.getElementById("menuPic").src = "images/register.png";
+                        document.getElementById("menuDesc").innerHTML = "<p>Register a new Gomoku online account</p>"
+                        break;
+                    case 7:
+                        document.getElementById("menuPic").src = "images/gomoku.jpg";
+                        document.getElementById("menuDesc").innerHTML = "<p>Welcome to Gomoku</p>"
+                        break;
+                    default:
+                        return;
+                }
+            }
+        </script>
+
         <!-- Menu -->
-        <ul>
-            <li><a href="#">Play Offline</a></li>
-            <li><a href="#">Play Online</a></li>
-            <li><a href="#">Contact</a></li>
-            <li><a href="#">How to Play</a></li>
-            <li><a href="#">Leaderboard</a></li>
-            <li><a href="#">Login</a></li>
-            <li><a href="#">Register</a></li>
+        <div class="menuBox">
+            <div class="header">
+                <h1 onmouseover="display(7)">Gomoku!</h1>
+            </div>
+            <img src="images/bulldog.png" id= "bulldogImg" alt="FSU Bulldog">
+        <div id="leftCont">
+        <ul id="menuList">
+            <li onmouseover="display(0)"><a href="game.html">Play Offline</a></li>
+            <li onmouseover="display(1)"><a href="game.html">Play Online</a></li>
+            <li onmouseover="display(2)"><a href="contact.html">Contact</a></li>
+            <li onmouseover="display(3)"><a href="help.html">How to Play</a></li>
+            <li onmouseover="display(4)"><a href="leaderboard.html">Leaderboard</a></li>
+            <li onmouseover="display(5)"><a href="login.html">Login</a></li>
+            <li onmouseover="display(6)"><a href="register.html">Register</a></li>
             <!-- Needs a logout button and DOM replacement for Login top menu when sessions is True -->
         </ul>
+        </div>
 
-
+        <div id="rightCont">
+            <img id="menuPic" src="images/gomoku.jpg" alt="Blank">
+            <div id="menuDesc">
+                <p>Welcome to Gomoku</p>
+             </div>
+        </div>
+        </div>
     </body>
 </html>

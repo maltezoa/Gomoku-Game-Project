@@ -1,4 +1,6 @@
-<?php
+<?php   
+    // requires testing
+
     // create a database with the name $databaseName
     // grant Data and Structure permissions then run this file
 

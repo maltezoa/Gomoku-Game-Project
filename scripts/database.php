@@ -7,8 +7,8 @@
     $servername = "localhost"; // hostname
     $username = "AdminLab12";
     $password = "4VPnroTOC6wOU3mn";
-    $userDB = "userDB";
-    $gomokuDB = "gomokuDB";
+    $userDB = "userdb";
+    $gomokuDB = "gomokudb";
 
 
     // DB Creation function
@@ -43,12 +43,12 @@
         }
 
         $sql = "CREATE TABLE users (	
-        idx INT(300) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
+        idx INT(30) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
         username VARCHAR(30) NOT NULL,
-        pw VARCHAR(300) NULL DEFAULT NULL,
-        gamesplayed INT(300) NULL DEFAULT 0,
-        gameswon INT(300) NULL DEFAULT 0,
-        timeplayed TIME NULL DEFAULT 0,
+        pw VARCHAR(300) NOT NULL,
+        gamesplayed INT(300) NOT NULL,
+        gameswon INT(300) NOT NULL,
+        timeplayed TIME NOT NULL,
         tilecolor VARCHAR(3000) NOT NULL,
         reg_date TIMESTAMP )";
 
@@ -98,7 +98,7 @@
     if(isset($_POST['callDBCreate']) && $_POST['callDBCreate'] == 'true'){
         createDB($userDB);
         createDB($gomokuDB);
-        createKeyboardsTable($userDB);
+        createUsersTable($userDB);
     }
 
     if(isset($_POST['callReset']) && $_POST['callReset'] == 'true'){

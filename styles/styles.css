@@ -2,22 +2,20 @@
     text-align: center;
     background-color: rgb(219,0,50);
     border: 2px inset rgb(190, 182, 182);
-    margin: 2px 4px 2px 4px;
-    padding: 2px 10px 2px 10px;
+    margin: 2px 2px 2px 2px;
+    padding: 1px 1px 1px 10px;
     display: inline-flex;
+    width: 85%;
     flex-shrink: 1;
     flex-grow: 1;
-}
-.menuItem a {
-    font-size: 78%;
+    color: white;
     font-family: 'Itim', cursive;
-    text-decoration: none;
-    color: rgb(255, 255, 255);
-    margin: auto;
 }
+
 body {
     background-color: rgb(27, 33, 41);
 }
+
 .header {
     font-family: 'Itim', cursive;
     font-size: larger;
@@ -25,15 +23,17 @@ body {
     text-align: center;
     position: relative;
 }
+
 .menuBox {
     width: 80vw;
-    height: 90vh;
+    height: 100vh;
     font-size: 20px;
     background-color: rgb(11, 31, 61);
     margin: 8vh auto 8vh auto;
     position: relative;
     border: 3px inset rgb(190, 182, 182);
 }
+
 #bulldogImg {
     display: block;
     position: relative;
@@ -42,31 +42,54 @@ body {
     width: 10%;
     height: auto;
 }
+
+#loginBox {
+    position: absolute;
+    text-align: left;
+    background-color: rgba(190, 182, 182, 0.5);
+    list-style: none;
+    margin: 8px 0px 0px 8px;
+    padding-left: 0px;
+    width: 18%;
+    height: auto;
+}
+
+#loginBox li {
+    text-align: center;
+    color: rgb(11, 31, 61);
+}
+
 #menuPic {
-    min-width: 85%;
+    min-width: 65%;
     max-width: 95%;
     height: auto;
     max-height: 80%;
     position: relative;
     border: 2px inset rgb(190, 182, 182);
+    background-color: white;
 }
+
 #menuDesc {
     font-family: 'Itim', cursive;
-    color: black;
+    color: white;
     font-size: auto;
+    font-weight: bold;
     height: auto;
     max-height: 15%;
     min-width: 85%;
     max-width: 95%;
 }
+
 #menuList {
     list-style-type: none;
     text-align: center;
+    align-content: center;
     display: flex;
     flex-direction: column;
     height: 80%;
     width: 100%;
 }
+
 #leftCont {
     float: left;
     width: 35%;
@@ -75,8 +98,9 @@ body {
     background-color: none;
     flex: 45%;
     order: 1;
-    flex-grow: 1
+    flex-grow: 1;
 }
+
 #rightCont {
     float: right;
     text-align: center;
@@ -85,8 +109,99 @@ body {
     flex:45%;
     margin: 3vh 2vw 2vh 1vw;
     padding: 1vh 1vw 1vh 1vw;
-    background-color: white;
+    background-color: rgb(219,0,50);
     border: 3px inset rgb(190, 182, 182);
     order: 2;
     flex-grow: 1;
+}
+
+.backLink {
+    text-decoration: none;
+    color: white;
+    font-size: 22px;
+    font-family: "Lucida Console", "Courier New", monospace;
+    background-color: rgb(27, 33, 41);
+    border: 3px inset rgb(190, 182, 182);
+    margin: 20px auto 3px auto;
+    text-align: center;
+    display: block;
+    width: 20%;
+}
+
+#helpList {
+    color: white;
+    list-style-image: url('../images/paw.png');
+    margin: 50px auto 5px 30px;
+}
+#helpList li {
+    font-family: 'Itim', cursive;
+    font-size: 28px;
+    padding-bottom: 25px;
+}
+.contactInfo {
+    width: 80%;
+    border: 3px inset rgb(190, 182, 182);
+    color: white;
+    background-color: rgb(219,0,50);
+    text-align: center;
+    margin: 2px auto 4px auto;
+    font-family: 'Lucida Console', monospace;
+}
+.contactInfo a {
+    text-decoration: underline;
+    color: white;
+}
+#statsTable {
+    background-color: rgb(27, 33, 41);
+    margin-left: auto;
+    margin-right: auto;
+    width: 85%;
+    height: 70%;
+    padding: 5px;
+    border-collapse: collapse;
+    border: 2px inset rgb(190, 182, 182);
+}
+#statsTable th {
+    background-color: rgb(219,0,50);
+    font-family: 'Itim', cursive;
+    color: white;
+}
+#statsTable tr {
+    border-bottom: 1px solid white;
+}
+#statsTable td:first-child {
+    text-align: center;
+    font-family: 'Itim', cursive;
+    font-weight: bold;
+    color: white;
+}
+#statsTable td {
+    color: white;
+    font-family: 'Itim', cursive;
+    text-align: center;
+}
+.loginLabel {
+    font-family: 'Itim', cursive;
+    color: white;
+    font-size: 40px;
+}
+input[type=text] {
+    background-color: white;
+    width: 75%;
+    height: 50px;
+    margin: 10px auto 10px auto;
+    font-size: 35px;
+}
+#loginField {
+    width: 80%;
+    margin: 10px auto 10px auto;
+    background-color: rgb(27, 33, 41);
+}
+input[type=submit] {
+    background-color: rgb(219,0,50);
+    color: white;
+    border-radius: 3px;
+    height: 25px;
+    width: 60px;
+    margin: 10px auto 15px 5px;
 }

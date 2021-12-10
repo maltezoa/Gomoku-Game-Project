@@ -3,18 +3,24 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="styles/styles.css">
-        <!-- Insert CSS File for Login/Register Page here-->        
+        <link rel="stylesheet" href="styles/styles.css">      
     </head>
     <body>
+    <div class="menuBox">
+       <div class="header">
+           <h1>Login</h1>
+       </div> 
 
-        <!-- 
-            Here we will have have users allowed to login for online play
-            Dependencies:
-                ID: Username
-                ID: Password
-                Tools: Login Sessions
-        -->
-        
+       <form>
+        <fieldset id="loginField">
+           <label class="loginLabel" for="username">Username: </label><br>
+           <input type="text" id="username" name="username" required maxlength="20"><br>
+           <label class="loginLabel" for="password">Password: </label><br>
+           <input type="text" id="password" name="password" required maxlength="25"><br>
+           <input type="submit" value="Submit">
+        </fieldset>
+        </form>
+        <a href="index.html" class="backLink">Go Back</a>
+    </div>
     </body>
 </html>

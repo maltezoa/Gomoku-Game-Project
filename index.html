@@ -49,19 +49,23 @@
 
         <!-- Menu -->
         <div class="menuBox">
+            <ul id="loginBox">
+                <li id="logBox1">Blah blah</li>
+                <li id="logBox2">Blah blah</li>
+            </ul>
             <div class="header">
                 <h1 onmouseover="display(7)">Gomoku!</h1>
+                <img src="images/bulldog.png" id= "bulldogImg" alt="FSU Bulldog">
             </div>
-            <img src="images/bulldog.png" id= "bulldogImg" alt="FSU Bulldog">
         <div id="leftCont">
         <ul id="menuList">
-            <li class="menuItem" onmouseover="display(0)"><a href="game.html">Play Offline</a></li>
-            <li class="menuItem" onmouseover="display(1)"><a href="game.html">Play Online</a></li>
-            <li class="menuItem" onmouseover="display(2)"><a href="contact.html">Contact</a></li>
-            <li class="menuItem" onmouseover="display(3)"><a href="help.html">How to Play</a></li>
-            <li class="menuItem" onmouseover="display(4)"><a href="leaderboard.html">Leaderboard</a></li>
-            <li class="menuItem" onmouseover="display(5)"><a href="login.html">Login</a></li>
-            <li class="menuItem" onmouseover="display(6)"><a href="register.html">Register</a></li>
+            <li class="menuItem" onmouseover="display(0)" onclick = "location.href='game.html'">Play Offline</li>
+            <li class="menuItem" onmouseover="display(1)" onclick = "location.href='game.html'">Play Online</li>
+            <li class="menuItem" onmouseover="display(2)" onclick = "location.href='contact.html'">Contact</li>
+            <li class="menuItem" onmouseover="display(3)" onclick = "location.href='help.html'">How to Play</li>
+            <li class="menuItem" onmouseover="display(4)" onclick = "location.href='leaderboard.html'">Leaderboard</li>
+            <li class="menuItem" onmouseover="display(5)" onclick = "location.href='login.html'">Login</li>
+            <li class="menuItem" onmouseover="display(6)" onclick = "location.href='register.html'">Register</li>
             <!-- Needs a logout button and DOM replacement for Login top menu when sessions is True -->
         </ul>
         </div>

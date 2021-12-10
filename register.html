@@ -6,7 +6,7 @@
         <!-- Insert CSS File for Login/Register Page here-->        
     </head>
     <body>
-
+        <h1>Registration</h1>
         <!-- 
             Here we will have have users allowed to Register for online play and insert into MySQL
             Dependencies:
@@ -15,8 +15,27 @@
                 ID: Wins (Default 0)
                 ID: Time played (Default 00:00)
                 ID: Games played (Default 0)
-                ID: Tile Color (Radio button: Red, Green, Blue, Yellow registered as an image stored in the folder)
+                ID: Tile Color (Drop down: Red, Green, Blue, Yellow registered as an image stored in the folder)
         -->
+        <div id="formContainer">
+            <form method="POST">
+                <label for="username">Username: </label>
+                <input type="text" placeholder="Enter Username" name="username" id="username" required>
+                <br>
+                <label for="pw">Password: </label>
+                <input type="password" placeholder="Enter Password" name="pw" id="pw" required>
+                <br>
+                <p>Pick a Default Tile Color: </p>
+                <select id="tilecolor" name="tilecolor">
+                    <option value="red">Red</option>
+                    <option value="green">Green</option>
+                    <option value="blue">Blue</option>
+                    <option value="yellow">Yellow</option>
+                  </select>
+                <br><br>
+                <input type="submit" name="submit" value="Register" onclick="">
+            </form>
+        </div>
         
     </body>
 </html>

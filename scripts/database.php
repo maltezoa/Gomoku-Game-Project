@@ -50,7 +50,8 @@
         gameswon INT(300) NOT NULL,
         timeplayed TIME NOT NULL,
         tilecolor VARCHAR(3000) NOT NULL,
-        reg_date TIMESTAMP )";
+        reg_date TIMESTAMP, 
+        UNIQUE (username))";
 
         echo $sql . '<br>';
         if ($conn->query($sql) === TRUE) {

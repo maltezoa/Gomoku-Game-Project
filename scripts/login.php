@@ -25,8 +25,10 @@
             $_SESSION['uname'] = $user;
             $_SESSION['id'] = $row['idx'];
             $_SESSION['loggedin'] = true;
+            // session status == 2 means True
+            //echo session_status() . "<br>";
+
             echo "Success";
-            //header("refresh:5;url=index.html");
         }else{
             echo "Invalid username/password";
         }        

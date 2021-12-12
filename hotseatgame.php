@@ -7,6 +7,17 @@
 
     </head>
     <body class="background">
+    <?php
+            session_start();
+
+            if (session_status() === PHP_SESSION_ACTIVE && !empty($_SESSION['uname'])) {
+                $host = $_SESSION['uname'];
+            } else {
+                echo '<script>alert("Please log in first.")</script>';;
+                header('Location: login.php');
+            }
+
+        ?>
 
         <section class="title">
             <h1>Gomoku</h1>
@@ -27,7 +38,7 @@
             <button id="reset" onclick="reset()">Reset</button>
         
 
-        <script src="./scripts/offlineGame.js">
+        <script src="./scripts/game.js">
         </script>
     </body>
 </html>

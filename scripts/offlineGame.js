@@ -1,6 +1,8 @@
    // Game in-process flag
    var game = true;
 
+
+
    // Turn count value initial @ 1 for first turn
    var turnCount = 1;
 
@@ -9,6 +11,10 @@
 
    // Player global variable
    var p = 1
+   
+   // player color choice
+   var tileColor1;
+   var tileColor2;
 
    // size variable 
    var size = 0;
@@ -26,7 +32,7 @@
            }
        }
    }
-   
+
 
    // function to create a board
    // Inspect the page to find the log. Function works. Just needs stylizing for the cells to show the table like a grid
@@ -59,6 +65,8 @@
            console.log(board);
            matrix = [];
            createMatrix(num);
+           // Start timer on game creation
+           startTimer();
            console.log(matrix);                
    }
 
@@ -110,6 +118,8 @@
     
        // if game is false, remove event listener, announce with player wins (p+1)
        if (!game){
+           // Stop Timer on win 
+           stopTimer();
            document.removeEventListener("click", addPiece());
            setTimeout(function(){alert("Player " + p + " wins!");},10);
        }
@@ -143,10 +153,11 @@
     
     }
 
-   // Reset board and game
+   // Reset board, game, and timer
    function reset(){
-       game = true;
-       p = 1;
-       document.addEventListener("click", addPiece);
-       createBoard(size);
+        game = true;
+        p = 1;
+        resetTimer();
+        document.addEventListener("click", addPiece);
+        createBoard(size);
    }

@@ -26,7 +26,10 @@
         </section>
 
         <section class="display">
-            Player <span class="display-player playerX">X</span>'s turn
+            <p>Player <span class="display-player playerX">X</span>'s turn</p>
+            <div id="stopwatch">
+                00:00:00
+            </div>
         </section>
 
         <section id="board">
@@ -37,8 +40,8 @@
         <section class="controls">
             <button id="reset" onclick="reset()">Reset</button>
         
-
-        <script src="./scripts/game.js">
-        </script>
+        
+        <script src="./scripts/timer.js"></script>
+        <script src="./scripts/game.js"></script>
     </body>
 </html>

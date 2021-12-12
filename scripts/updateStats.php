@@ -4,6 +4,7 @@
     $username = "AdminLab12";
     $password = "4VPnroTOC6wOU3mn";
     $userDB = "userdb";
+    $time = (isset($_POST['updateTime'])) ? $_POST['updateTime'] : "00:00:00";
 
     if (session_status() === PHP_SESSION_ACTIVE && !empty($_SESSION['uname'])) {
         $host = $_SESSION['uname'];
@@ -13,7 +14,7 @@
     }
 
 
-    function updateWins(){
+    function updateWins($time){
         GLOBAL $servername, $username, $password, $userDB, $host;
         $conn = new mysqli($servername, $username, $password, $userDB);
         // Check connection
@@ -21,7 +22,7 @@
 		    die("Connection failed: " . $conn->connect_error ."<br>");
 	    }
        
-        $sql = "UPDATE users SET gamesplayed = gamesplayed+1, gameswon = gameswon+1 WHERE username ='" . $host . "'";
+        $sql = "UPDATE users SET gamesplayed = gamesplayed+1, gameswon = gameswon+1, timeplayed = (ADDTIME(timeplayed,'" . $time ."')) WHERE username ='" . $host . "'";
 
         if ($conn->query($sql) === TRUE) {
             $response = "Record updated successfully";
@@ -34,7 +35,7 @@
         
     }
 
-    function updateGames(){
+    function updateGames($time){
         GLOBAL $servername, $username, $password, $userDB, $host;
         $conn = new mysqli($servername, $username, $password, $userDB);
         // Check connection
@@ -42,7 +43,7 @@
 		    die("Connection failed: " . $conn->connect_error ."<br>");
 	    }
 
-        $sql = "UPDATE users SET gamesplayed = gamesplayed+1 WHERE username ='" . $host . "'";
+        $sql = "UPDATE users SET gamesplayed = gamesplayed+1, timeplayed = (ADDTIME(timeplayed,'" . $time ."')) WHERE username ='" . $host . "'";
 
         if ($conn->query($sql) === TRUE) {
             $response = "Record updated successfully";
@@ -57,13 +58,13 @@
 
 
     if(isset($_POST['callGameWin']) && $_POST['callGameWin'] == 'true'){
-        updateWins();
+        updateWins($time);
 
     } 
     elseif(isset($_POST['callGameLoss']) && $_POST['callGameLoss'] == 'true'){
-        updateGames();
+        updateGames($time);
     }else {
-        echo "Ding dong error.";
+        echo $time;
     }
 
 ?>

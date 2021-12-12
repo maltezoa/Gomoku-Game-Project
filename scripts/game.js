@@ -59,6 +59,7 @@ function createBoard(num){
         console.log(board);
         matrix = [];
         createMatrix(num);
+        startTimer();
         console.log(matrix);                
 }
 
@@ -83,7 +84,7 @@ function checkWinner(){
         alert("Game has ended");
         return;
     }
-    var player = "<?php echo  $host; ?>";
+    //var player = "<?php echo  $host; ?>";
     for (var i=0; i<matrix.length; i++){
         for (var j=0; j<(matrix.length-5); j++){
             var z = matrix[i][j];
@@ -113,9 +114,11 @@ function checkWinner(){
     if (!game){
         document.removeEventListener("click", addPiece());
         if(p === 1){
+            stopTimer();
             updateHostWins();
             setTimeout(function(){alert("Host wins!");},10);
        } else {
+            stopTimer();
             updateHostGames();
             setTimeout(function(){alert("Host loses!");},10);
        }
@@ -154,12 +157,15 @@ function addPiece(row,col){
 function reset(){
     game = true;
     p = 1;
+    stopTimer();
+    resetTimer();
     document.addEventListener("click", addPiece);
     createBoard(size);
 }
 
 // Function DB update on Win
 function updateHostWins(){
+    var newTime = document.getElementById('stopwatch').innerHTML;
     // Creates the DB with entries from the keyboards.json file
     var req = new XMLHttpRequest();
     req.onreadystatechange = function () {
@@ -171,11 +177,13 @@ function updateHostWins(){
     }
     req.open("POST", "./scripts/updateStats.php");
     req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    req.send("callGameWin=true");
+    req.send("callGameWin=true" + "&updateTime=" + newTime);
 }
 
 // Function DB update on loss
 function updateHostGames(){
+    var newTime = document.getElementById('stopwatch').innerHTML;
+
     // Creates the DB with entries from the keyboards.json file
     var req = new XMLHttpRequest();
     req.onreadystatechange = function () {
@@ -187,5 +195,5 @@ function updateHostGames(){
     }
     req.open("POST", "./scripts/updateStats.php");
     req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    req.send("callGameLoss=true");
+    req.send("callGameLoss=true" + "&updateTime=" + newTime);
 }

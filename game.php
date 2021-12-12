@@ -15,8 +15,10 @@
         </section>
 
         <section class="display">
-            Player <span class="display-player playerX">X</span>'s turn
+            <p>Player <span class="display-player playerX">X</span>'s turn</p>
+            <p>00:00:00</p>
         </section>
+
 
         <section id="board">
                 

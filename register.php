@@ -53,7 +53,7 @@
                         var response = httpRequest.responseText;
                         alert(response);
                         if (response == "Success") {
-                            window.location.href = "login.html";
+                            window.location.href = "login.php";
                         }
                         }
                     }

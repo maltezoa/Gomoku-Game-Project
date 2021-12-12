@@ -79,33 +79,38 @@
    // Create checkif3 and checkif4. These will be similar to this function but with 1-2 less variable 
    // checks and will change the background color of those cells
    function checkWinner(){
-       for (var i=0; i<matrix.length; i++){
-           for (var j=0; j<(matrix.length-5); j++){
-               var z = matrix[i][j];
-               var y = matrix[j][i];
-               // If 5 in left -> right direction or left -> right diagonal direction (and is not going to go over the limit of the board)
-               // get the value of the cell/player, end game, break, output winner
-               if (z != 0 && ((z === matrix[i][j+1] && z === matrix[i][j+2] && z === matrix[i][j+3] && z === matrix[i][j+4]) || (i<=10 && z != -1 && z === matrix[i+1][j+1] && z === matrix[i+2][j+2] && z === matrix[i+3][j+3] && z === matrix[i+4][j+4]))){
-                   p = z;
-                   game = false;
-                   break;
-               }
-               // If 5 in top -> bottom direction, or 5 in right -> left diagonal direction (and is not going over the limit of the board) 
-               // get the value of the cell/player, end game, break, output winner
-               else if (y != 0 && ((y === matrix[j+1][i] && y === matrix[j+2][i] && y === matrix[j+3][i] && y === matrix[j+4][i]) || (i>=4 && y != -1 && y === matrix[j+1][i-1] && y === matrix[j+2][i-2] && y === matrix[j+3][i-3] && y === matrix[j+4][i-4]))){
-                   p = y;
-                   game = false;
-                   break;
-               }
-           }
-           // If game is false, break for loop
-           if (!game){
-               break;
-           }
-       }
+    if (!game){
+        alert("Game has ended");
+        return;
+    }
+    for (var i=0; i<matrix.length; i++){
+        for (var j=0; j<(matrix.length-5); j++){
+            var z = matrix[i][j];
+            var y = matrix[j][i];
+            // If 5 in left -> right direction or left -> right diagonal direction (and is not going to go over the limit of the board)
+            // get the value of the cell/player, end game, break, output winner
+            if (z != 0 && ((z === matrix[i][j+1] && z === matrix[i][j+2] && z === matrix[i][j+3] && z === matrix[i][j+4]) || (i<=10 && z != -1 && z === matrix[i+1][j+1] && z === matrix[i+2][j+2] && z === matrix[i+3][j+3] && z === matrix[i+4][j+4]))){
+                p = z;
+                game = false;
+                break;
+            }
+            // If 5 in top -> bottom direction, or 5 in right -> left diagonal direction (and is not going over the limit of the board) 
+            // get the value of the cell/player, end game, break, output winner
+            else if (y != 0 && ((y === matrix[j+1][i] && y === matrix[j+2][i] && y === matrix[j+3][i] && y === matrix[j+4][i]) || (i>=4 && y != -1 && y === matrix[j+1][i-1] && y === matrix[j+2][i-2] && y === matrix[j+3][i-3] && y === matrix[j+4][i-4]))){
+                p = y;
+                game = false;
+                break;
+            }
+        }
+        // If game is false, break for loop
+        if (!game){
+            break;
+        }
+    }
+    
        // if game is false, remove event listener, announce with player wins (p+1)
        if (!game){
-           document.removeEventListener("click", addPiece);
+           document.removeEventListener("click", addPiece());
            setTimeout(function(){alert("Player " + p + " wins!");},10);
        }
    }
@@ -114,26 +119,29 @@
    // Add piece will need stylizing for the pieces placed on the board. It will also take into account 
    // of the turn that the piece is placed in and put that number on top the piece.
    function addPiece(row,col){
-           //  check if spot is empty (-1), if not then alert a message saying a piece has already been placed there
-           if (matrix[row][col] !== 0){
-               alert("A piece has already been placed here.");
-           }
-           else{
-               // place a piece, put the player value in the 2dArray, increment turn count, advance into next player
-               matrix[row][col] = p;
-               if (p === 1){
-                   var piece = document.getElementById("cell_" + row + "_" + col);
-                   piece.innerHTML = 'X';
-                   piece.classList.add("playerX")
-               } else{
-                   var piece = document.getElementById("cell_" + row + "_" + col);
-                   piece.innerHTML = 'O';
-                   piece.classList.add("playerO")
-               }
-               turnCount += 1;
-               nextTurn();
-           }
-   }
+        if(game === true){
+            //  check if spot is empty (-1), if not then alert a message saying a piece has already been placed there
+            if (matrix[row][col] !== 0){
+                alert("A piece has already been placed here.");
+            }
+            else{
+                // place a piece, put the player value in the 2dArray, increment turn count, advance into next player
+                matrix[row][col] = p;
+                if (p === 1){
+                    var piece = document.getElementById("cell_" + row + "_" + col);
+                    piece.innerHTML = '<img src="./images/red.png" width="30"/>';
+                    piece.classList.add("playerX")
+                } else{
+                    var piece = document.getElementById("cell_" + row + "_" + col);
+                    piece.innerHTML = '<img src="./images/blue.png" width="30"/>';
+                    piece.classList.add("playerO")
+                }
+                turnCount += 1;
+                nextTurn();
+            }
+        }
+    
+    }
 
    // Reset board and game
    function reset(){

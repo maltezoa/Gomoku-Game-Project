@@ -43,8 +43,7 @@
                         var response = httpRequest.responseText;
                         alert(response);
                         if (response == "Success"){
-                            localStorage.username = username;
-                            window.location.href = "index.html";
+                            window.location.href = "index.php";
                             alert("Welcome " + username + "!");
                         }
                         }

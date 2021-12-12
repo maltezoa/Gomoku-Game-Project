@@ -56,7 +56,7 @@
             session_start();
 
             if (session_status() === PHP_SESSION_ACTIVE && !empty($_SESSION['uname'])) {
-                echo 'Logged in as ' . $_SESSION['uname'];
+                echo 'Logged in as ' . $_SESSION['uname'] . $_SESSION['wins'];
               }
 
             if(isset($_POST['but_logout']) && (session_status() === PHP_SESSION_ACTIVE)){

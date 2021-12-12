@@ -24,6 +24,7 @@
         if(($result->num_rows == 1) && $verifyPw){
             $_SESSION['uname'] = $user;
             $_SESSION['id'] = $row['idx'];
+            $_SESSION['wins'] = $row['gameswon'];
             $_SESSION['loggedin'] = true;
             // session status == 2 means True
             //echo session_status() . "<br>";

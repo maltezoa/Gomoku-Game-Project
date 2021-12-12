@@ -16,7 +16,9 @@
 
         <section class="display">
             <p>Player <span class="display-player playerX">X</span>'s turn</p>
-            <p>00:00:00</p>
+            <div id="stopwatch">
+            00:00:00
+        </div>
         </section>
 
 
@@ -29,7 +31,7 @@
             <button id="reset" onclick="reset()">Reset</button>
         
 
-        <script src="./scripts/offlineGame.js">
-        </script>
+        <script src="./scripts/timer.js"></script>
+        <script src="./scripts/offlineGame.js"></script>
     </body>
 </html>

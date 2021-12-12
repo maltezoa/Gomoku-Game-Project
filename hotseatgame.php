@@ -26,7 +26,7 @@
         </section>
 
         <section class="display">
-            <p>Player <span class="display-player playerX">X</span>'s turn</p>
+            <p id="playerName">Host's turn</span></p>
             <div id="stopwatch">
                 00:00:00
             </div>

@@ -76,9 +76,13 @@
    function nextTurn(){
        if (p === 2){
            p = 1;
+           document.getElementById("playerName").innerHTML = "";
+           document.getElementById("playerName").innerHTML = "Player 1's turn";
        }
        else {
            p = 2;
+           document.getElementById("playerName").innerHTML = "";
+           document.getElementById("playerName").innerHTML = "Player 2's turn";
        }
        checkWinner();
    }
@@ -141,10 +145,11 @@
                     var piece = document.getElementById("cell_" + row + "_" + col);
                     piece.innerHTML = '<img src="./images/red.png" width="30"/>';
                     piece.classList.add("playerX")
+                    
                 } else{
                     var piece = document.getElementById("cell_" + row + "_" + col);
                     piece.innerHTML = '<img src="./images/blue.png" width="30"/>';
-                    piece.classList.add("playerO")
+                    piece.classList.add("playerO");
                 }
                 turnCount += 1;
                 nextTurn();
@@ -155,6 +160,7 @@
 
    // Reset board, game, and timer
    function reset(){
+       turnCount = 0;
         game = true;
         p = 1;
         resetTimer();

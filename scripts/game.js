@@ -69,9 +69,13 @@ function createBoard(num){
 function nextTurn(){
     if (p === 2){
         p = 1;
+        document.getElementById("playerName").innerHTML = "";
+        document.getElementById("playerName").innerHTML = "Host's turn";
     }
     else {
         p = 2;
+        document.getElementById("playerName").innerHTML = "";
+        document.getElementById("playerName").innerHTML = "Opponent's turn";
     }
     checkWinner();
 }

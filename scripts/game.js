@@ -10,6 +10,10 @@ document.addEventListener("click", addPiece);
 // Player global variable
 var p = 1
 
+// player color choice
+var tileColor1;
+var tileColor2;
+
 // size variable 
 var size = 0;
 
@@ -31,6 +35,10 @@ function createMatrix(num) {
 // function to create a board
 // Inspect the page to find the log. Function works. Just needs stylizing for the cells to show the table like a grid
 function createBoard(num){
+    let colorflag = setColor();
+    if (colorflag === false){
+        return;
+    }
     size = num;
     if(num == 15){
         board = document.getElementById("board");
@@ -143,18 +151,36 @@ function addPiece(row,col){
             matrix[row][col] = p;
             if (p === 1){
                 var piece = document.getElementById("cell_" + row + "_" + col);
-                piece.innerHTML = '<img src="./images/red.png" width="30"/>';
+                piece.innerHTML = '<img src="./images/'+ tileColor1 +'.png" width="30"/>';
                 piece.classList.add("playerX")
+                
             } else{
                 var piece = document.getElementById("cell_" + row + "_" + col);
-                piece.innerHTML = '<img src="./images/blue.png" width="30"/>';
-                piece.classList.add("playerO")
+                piece.innerHTML = '<img src="./images/'+tileColor2+'.png" width="30"/>';
+                piece.classList.add("playerO");
             }
             turnCount += 1;
             nextTurn();
         }
     }
 
+}
+
+// Set Color based on form
+function setColor(){
+    var select = document.getElementById('p1color');
+    tileColor1 = select.options[select.selectedIndex].value;
+    select = document.getElementById('p2color');
+    tileColor2 = select.options[select.selectedIndex].value;
+    if(tileColor1 === tileColor2){
+        alert("Please pick 2 different colors");
+        return false;
+
+    } else {
+        select = document.getElementById('colorform');
+        select.classList.add("hide");
+        return true;
+    }
 }
 
 // Reset board and game

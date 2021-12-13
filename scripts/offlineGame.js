@@ -37,38 +37,42 @@
    // function to create a board
    // Inspect the page to find the log. Function works. Just needs stylizing for the cells to show the table like a grid
    function createBoard(num){
-       size = num;
-       if(num == 15){
-           board = document.getElementById("board");
-           board.innerHTML = "";
-           board.className = "container15"
+        let colorflag = setColor();
+        if (colorflag === false){
+            return;
+        }
+        size = num;
+        if(num == 15){
+            board = document.getElementById("board");
+            board.innerHTML = "";
+            board.className = "container15"
 
-       } else {
-           board = document.getElementById("board");
-           board.innerHTML = "";
-           board.className = "container19"
-       }
+        } else {
+            board = document.getElementById("board");
+            board.innerHTML = "";
+            board.className = "container19"
+        }
 
-       // if num == 15 use class tile, else use class cell for 19x19
+        // if num == 15 use class tile, else use class cell for 19x19
 
-       for(let j = 0; j < parseInt(num); j++){ // for each row
-           for(let i = 0; i < parseInt(num); i++ ){ // for each column
-               newCell = document.createElement("div");
-                   
-               newCell.setAttribute("class","tile");
-               newCell.setAttribute("id","cell_" + i + "_" + j);
-               newCell.setAttribute("onclick","addPiece(" + i + "," + j + ")");
+        for(let j = 0; j < parseInt(num); j++){ // for each row
+            for(let i = 0; i < parseInt(num); i++ ){ // for each column
+                newCell = document.createElement("div");
+                    
+                newCell.setAttribute("class","tile");
+                newCell.setAttribute("id","cell_" + i + "_" + j);
+                newCell.setAttribute("onclick","addPiece(" + i + "," + j + ")");
 
-               board.appendChild(newCell);
-           }
-       } 
-           console.log(board);
-           matrix = [];
-           createMatrix(num);
-           // Start timer on game creation
-           startTimer();
-           console.log(matrix);                
-   }
+                board.appendChild(newCell);
+            }
+        } 
+            console.log(board);
+            matrix = [];
+            createMatrix(num);
+            // Start timer on game creation
+            startTimer();
+            console.log(matrix);                
+    }
 
 
 
@@ -143,12 +147,12 @@
                 matrix[row][col] = p;
                 if (p === 1){
                     var piece = document.getElementById("cell_" + row + "_" + col);
-                    piece.innerHTML = '<img src="./images/red.png" width="30"/>';
+                    piece.innerHTML = '<img src="./images/'+ tileColor1 +'.png" width="30"/>';
                     piece.classList.add("playerX")
                     
                 } else{
                     var piece = document.getElementById("cell_" + row + "_" + col);
-                    piece.innerHTML = '<img src="./images/blue.png" width="30"/>';
+                    piece.innerHTML = '<img src="./images/'+tileColor2+'.png" width="30"/>';
                     piece.classList.add("playerO");
                 }
                 turnCount += 1;
@@ -157,6 +161,22 @@
         }
     
     }
+
+    function setColor(){
+        var select = document.getElementById('p1color');
+        tileColor1 = select.options[select.selectedIndex].value;
+        select = document.getElementById('p2color');
+        tileColor2 = select.options[select.selectedIndex].value;
+        if(tileColor1 === tileColor2){
+            alert("Please pick 2 different colors");
+            return false;
+
+        } else {
+            select = document.getElementById('colorform');
+            select.classList.add("hide");
+            return true;
+        }
+   }
 
    // Reset board, game, and timer
    function reset(){

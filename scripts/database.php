@@ -8,7 +8,6 @@
     $username = "AdminLab12";
     $password = "4VPnroTOC6wOU3mn";
     $userDB = "userdb";
-    $gomokuDB = "gomokudb";
 
 
     // DB Creation function
@@ -44,15 +43,13 @@
 
         $sql = "CREATE TABLE users (	
         idx INT(30) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
-        username VARCHAR(30) NOT NULL,
-        pw VARCHAR(300) NOT NULL,
-        gamesplayed INT(300) NOT NULL,
-        gameswon INT(300) NOT NULL,
+        username VARCHAR(30) NOT NULL UNIQUE,
+        pw VARCHAR(255) NOT NULL,
+        gamesplayed INT(255) NOT NULL,
+        gameswon INT(255) NOT NULL,
         timeplayed TIME NOT NULL,
-        tilecolor VARCHAR(3000) NOT NULL,
         reg_date TIMESTAMP )";
 
-        echo $sql . '<br>';
         if ($conn->query($sql) === TRUE) {
             echo "Table Users created successfully<br>";
         } else {
@@ -78,32 +75,15 @@
         $conn->close();
     }
 
-    // Clear Lobby data
-    function truncateGomoTable($db){
-        GLOBAL $servername, $username, $password;
-        $conn = new mysqli($servername, $username, $password, $db);
-	    // Check connection
-	    if ($conn->connect_error) {
-		    die("Connection failed: " . $conn->connect_error ."<br>");
-	    }
-
-		$sql = "TRUNCATE lobby;";
-		$conn->query($sql);
-
-        /* close connection */
-        $conn->close();
-    }
 
 
     if(isset($_POST['callDBCreate']) && $_POST['callDBCreate'] == 'true'){
         createDB($userDB);
-        createDB($gomokuDB);
         createUsersTable($userDB);
     }
 
     if(isset($_POST['callReset']) && $_POST['callReset'] == 'true'){
         truncateUsersTable($userDB);
-        truncateGomoTable($gomokuDB);
 
     }
 

@@ -3,9 +3,8 @@
     $username = "AdminLab12";
     $password = "4VPnroTOC6wOU3mn";
     $userDB = "userdb";
-    $gomokuDB = "gomokudb";
 
-    function registerUser($user, $pass, $tile){
+    function registerUser($user, $pass){
       global $servername, $username, $password, $userDB;
       $conn = new mysqli($servername, $username, $password, $userDB);
 
@@ -25,7 +24,7 @@
 
 
       $sql = "INSERT INTO users
-      VALUES (NULL, '". $user ."', '". $salted_hash ."', '0', '0', '0', '". $tile . ".png', current_timestamp());";
+      VALUES (NULL, '". $user ."', '". $salted_hash ."', '0', '0', '0', current_timestamp());";
 
       
       if ($conn->query($sql) === TRUE) {
@@ -39,11 +38,10 @@
       echo $response;
     }
 
-    if (isset($_POST['username']) && !empty($_POST['username']) && isset($_POST['pw']) && !empty($_POST['pw']) && isset($_POST['tilecolor'])){
+    if (isset($_POST['username']) && !empty($_POST['username']) && isset($_POST['pw']) && !empty($_POST['pw'])){
       $user = $_POST['username'];
       $pass = $_POST['pw'];
-      $tile = $_POST['tilecolor'];
-      registerUser($user, $pass, $tile);
+      registerUser($user, $pass);
     } else{
       echo "Please enter a Username/Password";
     }

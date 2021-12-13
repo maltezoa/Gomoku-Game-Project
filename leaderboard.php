@@ -2,6 +2,8 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./CSS/newdesign.css">
         
     </head>
     <body>
@@ -13,8 +15,11 @@
                 ID: Username
                 ID: Time played
                 ID: Games played
-        -->
-        <h1>Leaderboards</h1>
+         class="statsTable"-->
+         <div class="menuBox">
+        <div class="header">
+            <h1>Leaderboards</h1>
+        </div>
 
         <?php
             $servername = "localhost"; // hostname
@@ -28,8 +33,8 @@
                 die("Connection failed: " . $conn->connect_error ."<br>");
             }
 
-            $temp = "<table>";
-            $temp .= "<tr><th>Ranking</th>";
+            $temp = '<table id="statsTable">';
+            $temp .= "<tr><th>Rank</th>";
             $temp .= "<th>Username</th>";
             $temp .= "<th>Wins</th>";
             $temp .= "<th>Games Played</th>";
@@ -54,6 +59,11 @@
             echo $temp;
             $conn->close();
         ?>
+
+        <a class="backLink" href="index.php">Go Back</a>
+        </div>
+
+
         
     </body>
 </html>

@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <!-- Insert CSS File for Contact page here-->
-    </head>
-    <body>
-        <h1>Contact Information</h1>
+<head>
+    <meta charset="UTF-8">
+    <!-- Insert CSS File for Contact page here-->
+    <link rel="stylesheet" href="./CSS/newdesign.css" />
+</head>
+<body>
+    <div class="menuBox">
+        <div class="header">
+            <h1>Contact Information</h1>
+        </div>
         
         <!-- Mitch -->
-        <div class = "contactinfo">
+        
+        <div class = "contactInfo">
 			<section>
 				<h2>Mitchell Maltezo</h2>
                 <p>2311 White Chapel Way<br /> Porterville, CA 93257 <br/>
@@ -20,14 +25,16 @@
         <br/>
 
         <!-- JB -->
-        <div class = "contactinfo">
+        <div class = "contactInfo">
 			<section>
 				<h2>Jonathan Bradford</h2>
                 <p>1219 Linda Way<br /> Porterville, CA 93257 <br/>
                 <a href="mailto:jtbradford@mail.fresnostate.edu">jtbradford@mail.fresnostate.edu</a>
             </p>                
 			</section>
-		</div>
-        
-    </body>
+	    </div>
+        <a class="backLink" href="index.php">Go Back</a>
+    </div>
+    
+</body>
 </html>

@@ -19,7 +19,7 @@ From here you should be set to play offline. However, if you'd like to create ac
 User name: AdminLab12 <br>
 Host name: Select "local"<br>
 Password: 4VPnroTOC6wOU3mn<br>
-(From here if you haven't done so already, click "Check all" for global privileges)
+(From here if you haven't done so already, click "Check all" for global privileges)<br>
 <strong>Once finished</strong>
 <ul>
   <li>Go to: http://localhost/Gomoku-Game-Project/index.php</li>

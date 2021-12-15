@@ -1,3 +1,3 @@
 # Gomoku-Game-Project
- CSCI 130 Project: Gomoku
+<h1>How to set up</h1>
 

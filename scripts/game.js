@@ -98,18 +98,19 @@ function checkWinner(){
     }
     //var player = "<?php echo  $host; ?>";
     for (var i=0; i<matrix.length; i++){
-        for (var j=0; j<(matrix.length-5); j++){
+        for (var j=0; j<(matrix.length-4); j++){
             var z = matrix[i][j];
             var y = matrix[j][i];
             // If 5 in left -> right direction or left -> right diagonal direction (and is not going to go over the limit of the board)
             // get the value of the cell/player, end game, break, output winner
-            if (z != 0 && ((z === matrix[i][j+1] && z === matrix[i][j+2] && z === matrix[i][j+3] && z === matrix[i][j+4]) || (i<=10 && z != -1 && z === matrix[i+1][j+1] && z === matrix[i+2][j+2] && z === matrix[i+3][j+3] && z === matrix[i+4][j+4]))){
+            if (z != 0 && ((z === matrix[i][j+1] && z === matrix[i][j+2] && z === matrix[i][j+3] && z === matrix[i][j+4]) || (i<=(matrix.length-4) && z != -1 && z === matrix[i+1][j+1] && z === matrix[i+2][j+2] && z === matrix[i+3][j+3] && z === matrix[i+4][j+4]))){
                 p = z;
                 game = false;
                 break;
             }
             // If 5 in top -> bottom direction, or 5 in right -> left diagonal direction (and is not going over the limit of the board) 
             // get the value of the cell/player, end game, break, output winner
+            // bug from top right corner
             else if (y != 0 && ((y === matrix[j+1][i] && y === matrix[j+2][i] && y === matrix[j+3][i] && y === matrix[j+4][i]) || (i>=4 && y != -1 && y === matrix[j+1][i-1] && y === matrix[j+2][i-2] && y === matrix[j+3][i-3] && y === matrix[j+4][i-4]))){
                 p = y;
                 game = false;
@@ -189,6 +190,8 @@ function reset(){
     p = 1;
     stopTimer();
     resetTimer();
+    document.getElementById("playerName").innerHTML = "";
+    document.getElementById("playerName").innerHTML = "Host's turn";
     document.addEventListener("click", addPiece);
     createBoard(size);
 }

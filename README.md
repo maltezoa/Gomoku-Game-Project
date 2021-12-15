@@ -20,7 +20,8 @@ User name: AdminLab12 <br>
 Host name: Select "local"<br>
 Password: 4VPnroTOC6wOU3mn<br>
 (From here if you haven't done so already, click "Check all" for global privileges)<br>
-<strong>Once finished</strong>
+
+<h3>Once finished</h3>
 <ul>
   <li>Go to: http://localhost/Gomoku-Game-Project/index.php</li>
   <li>Click on the "Create DB" button" and you're set to go!</li>
